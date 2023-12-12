@@ -9,6 +9,11 @@ public class CowScript : MonoBehaviour
     public LogicScript logic;
     public bool cowIsAlive = true;
     //private CircleCollider2D circleCollider2D;
+    [SerializeField]private bool isGrounded = false;
+    [SerializeField]Transform groundCheckCollider;
+    const float groundCheckRadius = 0.2f;
+
+    [SerializeField]LayerMask groundLayer;
  
 
     //private bool IsGrounded()
@@ -30,6 +35,17 @@ public class CowScript : MonoBehaviour
     //    return raycastHit.collider != null;
     //}
 
+    void GroundCheck()
+    {
+        isGrounded = false;
+        // check if the GrouncdCheck object is colliding with other 2D colliders that are in "ground" layer
+        // if yes (isGrounded true) else (isGrounded) false
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, groundLayer);
+        if (colliders.Length > 0 )
+            isGrounded = true;
+    }
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -40,7 +56,7 @@ public class CowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        GroundCheck();
         //// Hyppy
         //if (IsGrounded() && Input.GetKeyDown(KeyCode.Space) && cowIsAlive) 
         //{ 
@@ -49,7 +65,7 @@ public class CowScript : MonoBehaviour
         //}
 
         // Hyppy
-        if (Input.GetKeyDown(KeyCode.Space) && cowIsAlive)
+        if (Input.GetKeyDown(KeyCode.Space) && cowIsAlive && isGrounded)
         { 
             myRigidbody.velocity = Vector2.up * pomppuNopeus;
 
