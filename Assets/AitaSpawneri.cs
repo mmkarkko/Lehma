@@ -42,7 +42,7 @@ public class AitaSpawneri : MonoBehaviour
             spawnAita();
             targetTime = Random.Range(targetTimeAlaraja, targetTimeYlaraja);
         }
-        Debug.Log("targetTime on " + targetTime);
+        //Debug.Log("targetTime on " + targetTime);
         
     }
 
