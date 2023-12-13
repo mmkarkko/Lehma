@@ -6,7 +6,6 @@ public class AitaSpawneri : MonoBehaviour
 {
     public GameObject aita;
     //public float spawnRate = 2;
-    //private float timer = 0;
     //public float heightOffset = 10;
     private float targetTime;
     private float targetTimeAlaraja = 5;
@@ -19,6 +18,7 @@ public class AitaSpawneri : MonoBehaviour
         spawnAita();
         targetTime = 5;
     }
+
 
     // Update is called once per frame
     void Update()
@@ -35,17 +35,18 @@ public class AitaSpawneri : MonoBehaviour
         //}
 
 
-        // Halutaan ajastin, joka kutsuu spawnAita() vaihtelevin väliajoin, välillä x-y
+        // Ajastin, joka kutsuu spawnAita() vaihtelevin väliajoin, välillä x-y
         targetTime -= Time.deltaTime;
         if (targetTime <= 0 )
         {
             spawnAita();
             targetTime = Random.Range(targetTimeAlaraja, targetTimeYlaraja);
         }
-        //Debug.Log("targetTime on " + targetTime);
-        
+        //Debug.Log("targetTime on " + targetTime);       
     }
 
+
+    // Luo pelikentälle törmättävän aidan
     void spawnAita()
     {
         //float lowestPoint  = transform.position.y - heightOffset;
@@ -53,10 +54,5 @@ public class AitaSpawneri : MonoBehaviour
         //Instantiate(aita, new Vector3(transform.position.x, Random.Range(lowestPoint, highestPoint), 0), transform.rotation); // Aidat spawnaa random-korkeudelle välillä lowestPoint-highestPoint
 
         Instantiate(aita, transform.position, transform.rotation); //aidat spawnaa aina samalle korkeudelle
-        
-
-        
-
     }
-
 }

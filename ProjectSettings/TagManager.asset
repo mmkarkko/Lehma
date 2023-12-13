@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Logic
   - maaTagi
+  - pelaaja
   layers:
   - Default
   - TransparentFX

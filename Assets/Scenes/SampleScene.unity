@@ -710,7 +710,7 @@ GameObject:
   - component: {fileID: 1027467523}
   m_Layer: 3
   m_Name: Pelihahmo
-  m_TagString: Untagged
+  m_TagString: pelaaja
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,6 +861,11 @@ MonoBehaviour:
   pomppuNopeus: 20
   logic: {fileID: 0}
   cowIsAlive: 1
+  isGrounded: 0
+  groundCheckCollider: {fileID: 2046236603}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &1240032962
 GameObject:
   m_ObjectHideFlags: 0

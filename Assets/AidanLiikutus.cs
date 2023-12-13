@@ -6,12 +6,15 @@ public class AidanLiikutus : MonoBehaviour
 {
     public float moveSpeed = 5;
     public float deadZone = -37;
+    public GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
     {
         
     }
+
 
     // Update is called once per frame
     void Update()
@@ -23,6 +26,5 @@ public class AidanLiikutus : MonoBehaviour
             Debug.Log("Aita Poistettu");
             Destroy(gameObject);
         }
-
     }
 }
