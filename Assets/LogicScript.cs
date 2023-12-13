@@ -9,11 +9,12 @@ public class LogicScript : MonoBehaviour
     public int pelaajanPisteet;
     public Text pisteTeksti;
     public GameObject gameOverScreen;
+    public bool isAlive = true;
 
     [ContextMenu("Lis‰‰ pisteet")]
     public void addScore(int scoreToAdd)
     {
-
+        
         pelaajanPisteet = pelaajanPisteet + scoreToAdd;
         pisteTeksti.text = pelaajanPisteet.ToString();
     }
