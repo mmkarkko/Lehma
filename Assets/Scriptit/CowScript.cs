@@ -6,7 +6,7 @@ public class CowScript : MonoBehaviour
 {
     
     [SerializeField]public Rigidbody2D rb;
-    public float hyppyVoima = 12;
+    public float hyppyVoima = 20;
     public float nopeus = 10;
     public LogicScript logic;
     public bool cowIsAlive = true;
@@ -31,6 +31,12 @@ public class CowScript : MonoBehaviour
         Collider2D[] colliders = Physics2D.OverlapCircleAll(groundCheckCollider.position, groundCheckRadius, groundLayer);
         if (colliders.Length > 0 )
             isGrounded = true;
+    }
+
+
+    void Move(float dir)
+    {
+
     }
 
 
@@ -67,7 +73,6 @@ public class CowScript : MonoBehaviour
         Flip();
 
 
-
         // Liikutus
         //if (Input.GetKeyDown(KeyCode.RightArrow) && Input.GetKeyDown(KeyCode.Space) && cowIsAlive)
         //{
@@ -86,8 +91,9 @@ public class CowScript : MonoBehaviour
     }
 
 
-    private void FixedUpdate()
+    void FixedUpdate()
     {
+        Move(horizontal);
         if (cowIsAlive)
         {
             rb.velocity = new Vector2(horizontal * nopeus, rb.velocity.y);
@@ -95,7 +101,7 @@ public class CowScript : MonoBehaviour
     }
 
 
-    private void Flip()
+    void Flip()
     {
         if (cowIsAlive)
         {
@@ -111,7 +117,7 @@ public class CowScript : MonoBehaviour
 
 
     // Tarkistetaan törmäys
-    private void OnCollisionEnter2D(Collision2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.collider.tag == "maaTagi")
         {
